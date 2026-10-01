@@ -1,0 +1,10 @@
+{
+  "name": "web-team-scroll-story",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node build.mjs && node server.mjs",
+    "build": "node build.mjs",
+    "check": "node --check app.js && node --check render.js && node --check content.js && node --check site.bundle.js && node --check server.mjs && node --test tests/motion.test.mjs tests/content.test.mjs"
+  }
+}
