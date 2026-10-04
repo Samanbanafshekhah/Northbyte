@@ -5,6 +5,6 @@
   "scripts": {
     "dev": "node build.mjs && node server.mjs",
     "build": "node build.mjs",
-    "check": "node --check app.js && node --check render.js && node --check content.js && node --check site.bundle.js && node --check server.mjs && node --test tests/motion.test.mjs tests/content.test.mjs"
+    "check": "node --check app.js && node --check cursor-motion.js && node --check login.js && node --check register.js && node --check dashboard.js && node --check render.js && node --check content.js && node --check site.bundle.js && node --check server.mjs && node --test tests/motion.test.mjs tests/content.test.mjs"
   }
 }

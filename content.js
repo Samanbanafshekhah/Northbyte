@@ -4,7 +4,7 @@ export const content = {
   en: {
     title: 'Software engineering, from interface to infrastructure',
     meta: 'Web applications, reliable APIs, integrations, and deployment. Meet the team building the systems behind ambitious ideas.',
-    skip: 'Skip to content', navLabel: 'Main navigation', nav: ['Services', 'Work', 'Process', 'Team'],
+    skip: 'Skip to content', navLabel: 'Main navigation', nav: ['Services', 'Work', 'Process', 'Team'], loginLink: 'Login',
     contactLink: 'Let’s talk', language: 'فارسی', languageLabel: 'Switch to Persian',
     heroLabel: 'SOFTWARE ENGINEERING / BUILT TOGETHER', heroTitle: 'We build the systems behind <em>ambitious ideas.</em>',
     heroText: 'From thoughtful interfaces and reliable APIs to deployment and operations, we turn complex requirements into web products built to work in the real world.',
@@ -53,7 +53,7 @@ export const content = {
   fa: {
     title: 'مهندسی نرم‌افزار؛ از رابط کاربری تا زیرساخت',
     meta: 'طراحی و توسعه وب‌اپلیکیشن، API، یکپارچه‌سازی سرویس‌ها و استقرار. تیمی برای ساخت سیستم‌هایی که ایده‌های بلندپروازانه را عملی می‌کنند.',
-    skip: 'رفتن به محتوای اصلی', navLabel: 'منوی اصلی', nav: ['خدمات', 'پروژه‌ها', 'روش همکاری', 'تیم'],
+    skip: 'رفتن به محتوای اصلی', navLabel: 'منوی اصلی', nav: ['خدمات', 'پروژه‌ها', 'روش همکاری', 'تیم'], loginLink: 'ورود',
     contactLink: 'شروع گفتگو', language: 'English', languageLabel: 'Switch to English',
     heroLabel: 'مهندسی نرم‌افزار / با هم می‌سازیم', heroTitle: 'پشت هر ایده بزرگ،<br><em>یک سیستم درست.</em>',
     heroText: 'از رابط کاربری دقیق و API قابل اتکا تا استقرار و نگهداری؛ نیازهای پیچیده را به محصولاتی تبدیل می‌کنیم که در دنیای واقعی کار می‌کنند.',

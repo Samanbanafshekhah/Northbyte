@@ -51,3 +51,33 @@ test('generated HTML stays in sync with the renderer', async () => {
   assert.ok(html.includes(renderSite('en')));
   assert.ok(html.includes('property="og:description"'));
 });
+
+test('login route is generated with accessible auth controls and no fake credentials', async () => {
+  const html = await readFile(new URL('../login/index.html', import.meta.url), 'utf8');
+  assert.ok(html.includes('autocomplete="email"'));
+  assert.ok(html.includes('autocomplete="current-password"'));
+  assert.ok(html.includes('data-login-language'));
+  assert.equal(siteConfig.authEndpoint, '');
+});
+
+test('register route is generated with secure account fields and no fake registration', async () => {
+  const html = await readFile(new URL('../register/index.html', import.meta.url), 'utf8');
+  assert.ok(html.includes('autocomplete="name"'));
+  assert.ok(html.includes('autocomplete="email"'));
+  assert.equal((html.match(/autocomplete="new-password"/g) || []).length, 2);
+  assert.ok(html.includes('name="terms"'));
+  assert.equal(siteConfig.registerEndpoint, '');
+});
+
+test('dashboard exposes the project workflow without pretending backend security exists', async () => {
+  const html = await readFile(new URL('../dashboard/index.html', import.meta.url), 'utf8');
+  const script = await readFile(new URL('../dashboard.js', import.meta.url), 'utf8');
+  assert.ok(html.includes('id="dashboard-app"'));
+  assert.ok(script.includes("'/dashboard/projects/new'"));
+  assert.ok(script.includes('allowedFiles'));
+  assert.ok(script.includes('sessionEndpoint'));
+  assert.equal(siteConfig.sessionEndpoint, '');
+  assert.equal(siteConfig.projectApiBase, '');
+  assert.equal(siteConfig.demoAuth.enabled, true);
+  assert.ok(siteConfig.demoAuth.email && siteConfig.demoAuth.password);
+});

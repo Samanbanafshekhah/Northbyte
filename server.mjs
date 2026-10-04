@@ -6,7 +6,8 @@ const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascrip
 http.createServer(async (req, res) => {
   try {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
-    const file = resolve(root, `.${pathname === '/' ? '/index.html' : pathname}`);
+    const route = pathname === '/' ? '/index.html' : pathname === '/login' || pathname === '/login/' ? '/login/index.html' : pathname === '/register' || pathname === '/register/' ? '/register/index.html' : pathname === '/dashboard' || pathname.startsWith('/dashboard/') ? '/dashboard/index.html' : pathname;
+    const file = resolve(root, `.${route}`);
     if (!file.startsWith(root + sep) || !types[extname(file)]) {
       res.writeHead(404).end('Not found'); return;
     }

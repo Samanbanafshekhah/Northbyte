@@ -77,6 +77,12 @@ function bindPage() {
   document.querySelectorAll('[data-language-switch]').forEach(button => button.addEventListener('click', () => switchLanguage(button.dataset.location)));
   document.querySelector('[data-motion-toggle]').addEventListener('click', () => { manualReduced = !manualReduced; syncMotionPreference(); });
   bindContact();
+  document.querySelectorAll('a[href="/login"]').forEach(link => link.addEventListener('click', event => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    document.documentElement.classList.add('page-leaving');
+    setTimeout(() => { window.location.href = link.href; }, reduced.matches || manualReduced ? 0 : 180);
+  }));
   syncMotionPreference();
 }
 
