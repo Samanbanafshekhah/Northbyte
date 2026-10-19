@@ -2,13 +2,16 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { renderSite, escapeHtml } from './render.js';
 import { siteConfig } from './site.config.js';
 import { content } from './content.js';
+import { applyPublishedContent } from './cms.js';
+
+try{applyPublishedContent(JSON.parse(await readFile('published-content.json','utf8')));}catch{/* The original static content is the default. */}
 
 const c = content.en;
 const title = escapeHtml(`${siteConfig.brand} — ${c.title}`);
 const canonical = siteConfig.publicUrl ? `<link rel="canonical" href="${escapeHtml(siteConfig.publicUrl)}"><meta property="og:url" content="${escapeHtml(siteConfig.publicUrl)}">` : '';
 // A small classic-script bundle also runs when index.html is opened via file://.
 // Sources retain their modules for development and Node tests; no runtime dependencies.
-const sources = await Promise.all(['site.config.js', 'content.js', 'render.js', 'motion.js', 'app.js'].map(file => readFile(file, 'utf8')));
+const sources = await Promise.all(['site.config.js', 'content.js', 'cms.js', 'render.js', 'motion.js', 'app.js'].map(file => readFile(file, 'utf8')));
 const bundle = sources.map(source => source.replace(/^import .+;\r?\n/gm, '').replace(/^export /gm, '')).join('\n');
 await writeFile('site.bundle.js', `(() => {\n'use strict';\n${bundle}\n})();\n`);
 await writeFile('index.html', `<!doctype html>
@@ -33,6 +36,7 @@ await writeFile('index.html', `<!doctype html>
 <body><div id="site">${renderSite('en')}</div></body>
 </html>\n`);
 await mkdir('login', { recursive: true });
+const disciplines = ['WEB APPS', 'BACKEND', 'DEVOPS', 'CLOUD', 'AUTOMATION'];
 await writeFile('login/index.html', `<!doctype html>
 <html lang="en" dir="ltr">
 <head>
@@ -48,7 +52,14 @@ await writeFile('login/index.html', `<!doctype html>
   <link rel="stylesheet" href="/login.css">
   <script type="module" defer src="/login.js"></script>
 </head>
-<body class="login-page">
+<body class="login-page auth-spotlight">
+  <div class="login-wordfield" aria-hidden="true" dir="ltr">
+    ${Array.from({ length: 56 }, (_, i) => {
+      const x = (i % 8) * 12.5 + 2 + ((i * 17) % 7);
+      const y = Math.floor(i / 8) * 13 + 12 + ((i * 11) % 6);
+      return `<span class="hover-word" data-x="${x}" data-y="${y}" style="left:${x}%;top:${y}%;font-size:${12 + (i * 7) % 11}px">${disciplines[(i * 3 + Math.floor(i / 8)) % disciplines.length]}</span>`;
+    }).join('')}
+  </div>
   <a class="skip-link" href="#login-form">Skip to sign in</a>
   <header class="login-header">
     <a class="brand login-brand" href="/" aria-label="${escapeHtml(siteConfig.brand)} home"><img class="brand-mark" src="/assets/northbyte-mark.svg" width="38" height="38" alt=""><b dir="ltr">${escapeHtml(siteConfig.brand)}</b></a>

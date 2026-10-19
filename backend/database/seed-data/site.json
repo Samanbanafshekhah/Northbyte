@@ -1,0 +1,286 @@
+{
+  "copy": {
+    "en": {
+      "heroLabel": "SOFTWARE ENGINEERING / BUILT TOGETHER",
+      "heroTitle": "We build the systems behind <em>ambitious ideas.</em>",
+      "heroText": "From thoughtful interfaces and reliable APIs to deployment and operations, we turn complex requirements into web products built to work in the real world.",
+      "footerStatement": "Thoughtful interfaces. Reliable systems. Built together.",
+      "servicesIntro": "We connect the experience your users see with the engineering they rely on. One team, from the first requirement to ongoing operation.",
+      "workIntro": "A closer look at the kinds of systems we work on, the problems they address, and the decisions behind them.",
+      "techIntro": "A practical stack for application development, data, integrations, and reliable delivery. The requirements guide the choices.",
+      "contactIntro": "Tell us about the problem, who the product is for, and the constraints that matter. That is a good place to start."
+    },
+    "fa": {
+      "heroLabel": "مهندسی نرم‌افزار / با هم می‌سازیم",
+      "heroTitle": "پشت هر ایده بزرگ،<br><em>یک سیستم درست.</em>",
+      "heroText": "از رابط کاربری دقیق و API قابل اتکا تا استقرار و نگهداری؛ نیازهای پیچیده را به محصولاتی تبدیل می‌کنیم که در دنیای واقعی کار می‌کنند.",
+      "footerStatement": "رابط‌های سنجیده. سیستم‌های قابل اتکا. با هم می‌سازیم.",
+      "servicesIntro": "تجربه‌ای که کاربر می‌بیند را به زیرساختی وصل می‌کنیم که به آن تکیه دارد. از اولین نیاز تا نگهداری، یک تیم کنار پروژه است.",
+      "workIntro": "نگاهی نزدیک‌تر به نوع سیستم‌هایی که روی آن‌ها کار می‌کنیم، مسئله‌هایی که حل می‌کنند و تصمیم‌های فنی پشت آن‌ها.",
+      "techIntro": "مجموعه‌ای کاربردی برای توسعه نرم‌افزار، داده، اتصال سرویس‌ها و استقرار قابل اتکا. نیاز پروژه، انتخاب‌ها را مشخص می‌کند.",
+      "contactIntro": "از مسئله، کاربران محصول و محدودیت‌های مهم بگویید. همین‌ها نقطه شروع خوبی برای یک گفت‌وگوی سازنده‌اند."
+    }
+  },
+  "services": {
+    "en": [
+      {
+        "number": "01",
+        "title": "Web applications",
+        "description": "Tools that fit the way you work: dashboards, portals, approval flows, and applications with the right permissions.",
+        "tags": "WORKFLOWS / PERMISSIONS / DATA"
+      },
+      {
+        "number": "02",
+        "title": "Websites & interfaces",
+        "description": "Clear, responsive websites and practical interfaces that help people find information and get things done.",
+        "tags": "RESPONSIVE / ACCESSIBLE / USABLE"
+      },
+      {
+        "number": "03",
+        "title": "Backend & API development",
+        "description": "Structured business logic, reliable data models, and APIs that give your product room to evolve.",
+        "tags": "BUSINESS LOGIC / DATABASES / REST"
+      },
+      {
+        "number": "04",
+        "title": "DevOps & deployment",
+        "description": "Repeatable releases and considered infrastructure, with deployment, configuration, and maintenance built into the plan.",
+        "tags": "LINUX / CONTAINERS / CI/CD"
+      },
+      {
+        "number": "05",
+        "title": "System integrations",
+        "description": "Connect services and reduce manual handoffs with validated data exchange and well-defined failure handling.",
+        "tags": "EXTERNAL SERVICES / DATA EXCHANGE"
+      }
+    ],
+    "fa": [
+      {
+        "number": "۰۱",
+        "title": "وب‌اپلیکیشن",
+        "description": "ابزارهایی متناسب با روش کار شما؛ از داشبورد و پرتال تا گردش تأیید درخواست‌ها و دسترسی‌های دقیق.",
+        "tags": "گردش کار / دسترسی / داده"
+      },
+      {
+        "number": "۰۲",
+        "title": "وب‌سایت و رابط کاربری",
+        "description": "وب‌سایت‌های واکنش‌گرا و رابط‌های روشن و کاربردی که پیدا کردن اطلاعات و انجام کارها را ساده می‌کنند.",
+        "tags": "واکنش‌گرا / دسترس‌پذیر / کاربردی"
+      },
+      {
+        "number": "۰۳",
+        "title": "بک‌اند و توسعه API",
+        "description": "منطق کسب‌وکار منسجم، مدل داده دقیق و APIهایی که با رشد محصول قابل توسعه می‌مانند.",
+        "tags": "منطق کسب‌وکار / پایگاه داده / REST"
+      },
+      {
+        "number": "۰۴",
+        "title": "دواپس و استقرار",
+        "description": "انتشار تکرارپذیر و زیرساخت سنجیده؛ استقرار، پیکربندی و نگهداری از ابتدا بخشی از برنامه‌اند.",
+        "tags": "لینوکس / کانتینر / CI/CD"
+      },
+      {
+        "number": "۰۵",
+        "title": "یکپارچه‌سازی سیستم‌ها",
+        "description": "اتصال سرویس‌ها و کاهش کارهای دستی با تبادل داده معتبر و مدیریت روشن خطاها.",
+        "tags": "سرویس‌های بیرونی / تبادل داده"
+      }
+    ]
+  },
+  "portfolio": {
+    "en": [
+      {
+        "category": "PORTALS & INTEGRATIONS",
+        "title": "Cooperative services portal",
+        "description": "A clear path through registration, approvals, and external service checks.",
+        "challenge": "Multi-step requests need accurate data and a clear view of what happens next, even when external services are involved.",
+        "approach": "Model the application as explicit workflow stages, validate each step, and keep external checks separate from the request lifecycle.",
+        "capabilities": [
+          "Registration & approval stages",
+          "Request tracking and validation",
+          "Government or registry service integrations"
+        ],
+        "tech": [
+          "PHP",
+          "Laravel",
+          "MySQL",
+          "REST APIs"
+        ],
+        "diagram": [
+          "Register",
+          "Validate",
+          "Review",
+          "Approve"
+        ]
+      },
+      {
+        "category": "OPERATIONS & WORKFLOWS",
+        "title": "Organizational task manager",
+        "description": "Tasks, permissions, and approvals that reflect how an organization operates.",
+        "challenge": "Hierarchical roles and approval paths make a simple task list insufficient for coordinating work.",
+        "approach": "Define role-aware access and explicit task states, with APIs that keep assignments, requests, and progress consistent.",
+        "capabilities": [
+          "Hierarchical positions & access control",
+          "Task assignment and request approvals",
+          "Progress tracking and API design"
+        ],
+        "tech": [
+          "PHP",
+          "Yii",
+          "PostgreSQL",
+          "REST APIs"
+        ],
+        "diagram": [
+          "Assign",
+          "In progress",
+          "Review",
+          "Complete"
+        ]
+      },
+      {
+        "category": "COMMERCE & PLATFORMS",
+        "title": "E-commerce platform",
+        "description": "Product discovery and purchase flows, supported by practical administration.",
+        "challenge": "Catalog structure, pricing, purchase flows, and permissions must work together for both shoppers and administrators.",
+        "approach": "Separate catalog and pricing rules from purchase workflows, and plan administrative access alongside deployment.",
+        "capabilities": [
+          "Product, category & pricing management",
+          "Purchase flows and administration",
+          "Permissions and deployment"
+        ],
+        "tech": [
+          "Laravel",
+          "JavaScript",
+          "MySQL",
+          "Docker"
+        ],
+        "diagram": [
+          "Discover",
+          "Select",
+          "Purchase",
+          "Manage"
+        ]
+      }
+    ],
+    "fa": [
+      {
+        "category": "پرتال و یکپارچه‌سازی",
+        "title": "پرتال خدمات تعاونی",
+        "description": "مسیری روشن برای ثبت‌نام، تأیید درخواست و استعلام از سرویس‌های بیرونی.",
+        "challenge": "درخواست‌های چندمرحله‌ای به داده دقیق و وضعیت قابل پیگیری نیاز دارند؛ به‌خصوص وقتی استعلام از سرویس‌های بیرونی بخشی از فرایند است.",
+        "approach": "فرایند به مرحله‌های مشخص تقسیم می‌شود، داده‌ها در هر مرحله اعتبارسنجی می‌شوند و استعلام‌های بیرونی از چرخه اصلی درخواست جدا می‌مانند.",
+        "capabilities": [
+          "ثبت‌نام و تأیید چندمرحله‌ای",
+          "پیگیری درخواست و اعتبارسنجی داده",
+          "اتصال به سرویس‌های دولتی یا ثبتی"
+        ],
+        "tech": [
+          "PHP",
+          "Laravel",
+          "MySQL",
+          "REST APIs"
+        ],
+        "diagram": [
+          "ثبت‌نام",
+          "اعتبارسنجی",
+          "بررسی",
+          "تأیید"
+        ]
+      },
+      {
+        "category": "عملیات و گردش کار",
+        "title": "مدیریت وظایف سازمانی",
+        "description": "وظایف، دسترسی‌ها و تأییدهایی هماهنگ با ساختار واقعی سازمان.",
+        "challenge": "وقتی سمت‌ها سلسله‌مراتبی و مسیرهای تأیید چندمرحله‌ای هستند، یک فهرست ساده وظایف برای هماهنگی کافی نیست.",
+        "approach": "دسترسی مبتنی بر نقش و وضعیت‌های مشخص وظیفه تعریف می‌شوند و APIها تخصیص کار، درخواست‌ها و پیشرفت را هماهنگ نگه می‌دارند.",
+        "capabilities": [
+          "سمت‌های سلسله‌مراتبی و کنترل دسترسی",
+          "تخصیص وظیفه و تأیید درخواست",
+          "پیگیری پیشرفت و طراحی API"
+        ],
+        "tech": [
+          "PHP",
+          "Yii",
+          "PostgreSQL",
+          "REST APIs"
+        ],
+        "diagram": [
+          "تخصیص",
+          "در حال انجام",
+          "بررسی",
+          "تکمیل"
+        ]
+      },
+      {
+        "category": "تجارت الکترونیک",
+        "title": "پلتفرم فروشگاهی",
+        "description": "از پیدا کردن محصول تا خرید، همراه با ابزارهای مدیریت کاربردی.",
+        "challenge": "ساختار محصولات، قیمت‌گذاری، فرایند خرید و سطح دسترسی باید برای خریدار و مدیر فروشگاه هماهنگ عمل کنند.",
+        "approach": "قواعد محصول و قیمت از فرایند خرید جدا می‌شوند و دسترسی‌های مدیریتی هم‌زمان با برنامه استقرار طراحی می‌شوند.",
+        "capabilities": [
+          "مدیریت محصول، دسته‌بندی و قیمت",
+          "فرایند خرید و پنل مدیریت",
+          "سطوح دسترسی و استقرار"
+        ],
+        "tech": [
+          "Laravel",
+          "JavaScript",
+          "MySQL",
+          "Docker"
+        ],
+        "diagram": [
+          "جست‌وجو",
+          "انتخاب",
+          "خرید",
+          "مدیریت"
+        ]
+      }
+    ]
+  },
+  "technologies": {
+    "items": [
+      "PHP",
+      "Laravel",
+      "Yii",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "MySQL",
+      "PostgreSQL",
+      "Redis",
+      "REST APIs",
+      "Docker",
+      "Linux",
+      "Nginx",
+      "Git",
+      "CI/CD"
+    ]
+  },
+  "team": {
+    "people": [
+      {
+        "id": "saman",
+        "name": {
+          "en": "Saman Banafshe Khah",
+          "fa": "سامان بنفشه‌خواه"
+        },
+        "bio": {
+          "en": "Saman is the founder of {brand}. Together with Mohsen, he builds web products that connect practical interfaces, backend systems, and the infrastructure behind them. The team’s approach brings architecture, implementation, and ongoing operation into one continuous process.",
+          "fa": "سامان بنیان‌گذار {brand} است. او در کنار محسن روی ساخت محصولات وب کار می‌کند؛ محصولاتی که رابط کاربردی، سیستم بک‌اند و زیرساخت را به هم وصل می‌کنند. رویکرد تیم، معماری، پیاده‌سازی و نگهداری را در یک مسیر پیوسته کنار هم قرار می‌دهد."
+        }
+      },
+      {
+        "id": "mohsen",
+        "name": {
+          "en": "Mohsen Zirak",
+          "fa": "محسن زیرک"
+        },
+        "bio": {
+          "en": "Mohsen is the co-founder of {brand}. Together with Saman, he works across software engineering and delivery, turning complex requirements into usable web systems. Their shared focus is clear workflows, well-connected services, and software a team can understand and maintain.",
+          "fa": "محسن هم‌بنیان‌گذار {brand} است. او در کنار سامان در مهندسی نرم‌افزار و اجرای پروژه فعالیت می‌کند و نیازهای پیچیده را به سیستم‌های وب کاربردی تبدیل می‌کند. تمرکز مشترک آن‌ها، گردش کار روشن، سرویس‌های هماهنگ و نرم‌افزاری است که تیم بتواند آن را بفهمد و نگهداری کند."
+        }
+      }
+    ]
+  }
+}

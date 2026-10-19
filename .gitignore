@@ -1,0 +1,7 @@
+private/
+server.*.log
+.env
+backend/vendor/
+backend/storage/*.log
+*.stdout.log
+*.stderr.log

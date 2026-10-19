@@ -1,0 +1,7 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {content,technologies} from '../content.js';import {siteConfig} from '../site.config.js';import {applyPublishedContent} from '../cms.js';import {renderSite} from '../render.js';
+test('published CMS content preserves bilingual structure and escapes executable markup',()=>{
+ const saved={content:structuredClone(content),people:structuredClone(siteConfig.people),tech:[...technologies],brand:siteConfig.brand,email:siteConfig.contactEmail};
+ try{const project={...structuredClone(content.en.projects[0]),title:'<img src=x onerror=alert(1)>',capabilities:['<script>alert(1)</script>'],diagram:['<svg onload=alert(1)>']};applyPublishedContent({copy:{en:{heroTitle:'Build <em>safely.</em><img src=x onerror=alert(1)>'},fa:{heroText:'متن منتشرشده فارسی'}},services:{en:[{number:'01',title:'<script>run()</script>',description:'Description','tags':'Web'}]},portfolio:{en:[project]},technologies:{items:['<img src=x onerror=alert(1)>']}});const en=renderSite('en');assert.ok(en.includes('<em>safely.</em>'));assert.ok(en.includes('&lt;script&gt;'));assert.ok(!en.includes('<script>'));assert.ok(!en.includes('<img src=x'));assert.ok(renderSite('fa').includes('متن منتشرشده فارسی'));assert.equal(siteConfig.people[0].portrait,saved.people[0].portrait);}
+ finally{Object.assign(content,saved.content);siteConfig.people=saved.people;technologies.splice(0,technologies.length,...saved.tech);siteConfig.brand=saved.brand;siteConfig.contactEmail=saved.email;}
+});

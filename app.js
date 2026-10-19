@@ -2,6 +2,7 @@ import { clamp, getSceneOffset } from './motion.js';
 import { content } from './content.js';
 import { renderSite } from './render.js';
 import { siteConfig } from './site.config.js';
+import { applyPublishedContent } from './cms.js';
 
 const root = document.querySelector('#site');
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
@@ -67,6 +68,7 @@ function bindPage() {
     });
   }, { threshold: 0.06 });
   observer.observe(hero);
+  observer.observe(document.querySelector('.process-section'));
   // Animate meaningful content groups instead of stacking transforms on every nested div.
   const revealTargets = document.querySelectorAll('.hero-copy > *, .architecture-stage, .system-band > *, .section-heading > *, .service-card, .service-visual, .project-card, .process-list li, .team-card, .technology-list span, .contact-copy > *, #contact-form, .site-footer > div, .site-footer > nav');
   revealTargets.forEach((element, index) => {
@@ -150,3 +152,4 @@ bindPage();
 window.addEventListener('scroll', schedule, { passive: true });
 window.addEventListener('resize', schedule, { passive: true });
 reduced.addEventListener('change', syncMotionPreference);
+fetch('/api/public/content',{headers:{Accept:'application/json'},signal:AbortSignal.timeout(3500)}).then(response=>response.ok?response.json():null).then(data=>{if(!data||!Object.keys(data).length)return;const values=Object.fromEntries(new FormData(document.querySelector('#contact-form')));applyPublishedContent(data);root.innerHTML=renderSite(language);updateMetadata();bindPage();for(const [name,value] of Object.entries(values)){const input=document.querySelector(`#contact-form [name="${name}"]`);if(input)input.value=value;}}).catch(()=>{/* Static content remains available without the backend. */});

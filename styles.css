@@ -323,16 +323,38 @@ input[type='checkbox'] { accent-color: var(--violet); }
   background: linear-gradient(90deg,transparent,var(--violet),var(--cyan),transparent) -45% 0 / 30% 100% no-repeat;
 }
 .process-list li:last-child::after { display: none; }
-.motion-enabled .process-list li::after { animation: process-flow 10s linear infinite; }
-.process-list li:nth-child(2)::after { animation-delay: 2.5s; }
-.process-list li:nth-child(3)::after { animation-delay: 5s; }
-.process-list li:nth-child(4)::after { animation-delay: 7.5s; }
-[dir='rtl'] .process-list li::after { scale: -1 1; }
+.process-list li { --process-arrival:0s; --process-ring-start:-90deg; --process-ring-end:450deg; }
+.process-list li:nth-child(2) { --process-arrival:3s; }
+.process-list li:nth-child(3) { --process-arrival:6s; }
+.process-list li:nth-child(4) { --process-arrival:9s; }
+.process-list li:nth-child(5) { --process-arrival:12s; }
+.process-number { position:relative; }
+.process-number::after {
+  content:''; position:absolute; inset:-2px; border-radius:50%; padding:2px; pointer-events:none; opacity:0;
+  background:conic-gradient(transparent 0deg 255deg,var(--violet) 310deg,var(--cyan) 350deg,transparent 360deg);
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); mask-composite:exclude;
+  filter:drop-shadow(0 0 3px var(--violet));
+}
+.motion-enabled .process-list li::after { animation:process-flow 15s linear var(--process-arrival) infinite; }
+.motion-enabled .process-number { animation:process-number-glow 15s ease-out var(--process-arrival) infinite; }
+.motion-enabled .process-number::after { animation:process-circle-trace 15s linear var(--process-arrival) infinite; }
+@keyframes process-circle-trace {
+  0% { opacity:0; transform:rotate(var(--process-ring-start)); }
+  1% { opacity:1; }
+  7.5% { opacity:1; transform:rotate(var(--process-ring-end)); }
+  8%,100% { opacity:0; transform:rotate(var(--process-ring-end)); }
+}
+@keyframes process-number-glow {
+  0%,7.5% { color:var(--text); border-color:var(--violet); background:color-mix(in srgb,var(--violet) 19%,var(--surface)); box-shadow:0 0 15px color-mix(in srgb,var(--violet) 28%,transparent); text-shadow:0 0 7px var(--violet); }
+  12%,100% { color:var(--violet); border-color:color-mix(in srgb,var(--violet) 33.73%,transparent); background:var(--surface); box-shadow:0 0 0 transparent; text-shadow:0 0 0 transparent; }
+}
+[dir='rtl'] .process-list li { --process-ring-start:90deg; --process-ring-end:630deg; }
+[dir='rtl'] .process-list li::after { scale:-1 1; }
 @keyframes process-flow {
-  0% { background-position: -45% 0; opacity: 0; }
-  3% { opacity: .85; }
-  22% { opacity: .85; }
-  25%,100% { background-position: 145% 0; opacity: 0; }
+  0%,8% { background-position:-45% 0; opacity:0; }
+  9% { opacity:.85; }
+  19% { opacity:.85; }
+  20%,100% { background-position:145% 0; opacity:0; }
 }
 .team-avatar::after {
   content: ''; position: absolute; inset: 0; border-radius: 50%; z-index: 2;
@@ -344,7 +366,7 @@ input[type='checkbox'] { accent-color: var(--violet); }
 .motion-enabled .team-avatar::after { animation: portrait-orbit 9s linear infinite; }
 .team-card:nth-child(2) .team-avatar::after { animation-delay: -4.5s; }
 @keyframes portrait-orbit { to { transform: rotate(360deg); } }
-.process-list li[data-visible='false']::after,.team-card[data-visible='false'] .team-avatar::after { animation-play-state: paused; }
+.process-section[data-visible='false'] .process-list li::after,.process-section[data-visible='false'] .process-number,.process-section[data-visible='false'] .process-number::after,.team-card[data-visible='false'] .team-avatar::after { animation-play-state: paused; }
 @media(max-width:800px) {
   .process-list { grid-template-columns: 1fr; gap: 27px; }
   .process-list li { padding-inline-start: 62px; }
@@ -353,12 +375,12 @@ input[type='checkbox'] { accent-color: var(--violet); }
   .process-list li:last-child::before,.process-list li:last-child::after { display: none; }
   .process-list li::after { background: linear-gradient(180deg,transparent,var(--violet),var(--cyan),transparent) 0 -45% / 100% 30% no-repeat; }
   .motion-enabled .process-list li::after { animation-name: process-flow-vertical; }
+  .process-list li,[dir='rtl'] .process-list li { --process-ring-start:0deg; --process-ring-end:540deg; }
 }
 @keyframes process-flow-vertical {
-  0% { background-position: 0 -45%; opacity: 0; }
-  3% { opacity: .85; }
-  22% { opacity: .85; }
-  25%,100% { background-position: 0 145%; opacity: 0; }
+  0%,8% { background-position:0 -45%; opacity:0; }
+  9%,19% { opacity:.85; }
+  20%,100% { background-position:0 145%; opacity:0; }
 }
 /* NorthByte wordmark with a geometric NB monogram and north-point detail. */
 .brand-mark { width: 38px; height: 38px; flex: 0 0 auto; }

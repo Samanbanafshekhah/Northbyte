@@ -110,3 +110,40 @@ html.motion-enabled.login-ready .login-card::after { animation: card-border-orbi
 @media(max-width:560px) { .register-passwords { grid-template-columns: 1fr; gap: 0; }.register-card .login-heading { margin-bottom: 22px; } }
 @media(max-width:420px) { .login-language { padding-inline: 4px; }.login-brand { gap: 9px; font-size: 10px; }.login-brand .brand-mark { width: 31px; height: 31px; }.login-story { padding-top: 29px; }.story-copy h1 { font-size: 29px; }.login-disciplines { display: none; }.login-panel { padding-inline: 12px; }.login-card { padding: 26px 18px 22px; }.login-options { gap: 12px; font-size: 9px; }.login-security { font-size: 6.5px; } }
 @media(prefers-reduced-motion:reduce) { .login-card { transform: none!important; }.login-panel::before { display: none; } }
+
+/* Sparse words emerge near the mouse over the original network animation. */
+.auth-spotlight { --bg: #050609; --surface: #0e1017; background: #050609; }
+.auth-spotlight::before { opacity: .12; }
+.auth-spotlight .login-header { background: #050609f2; border-bottom-color: #ffffff08; }
+.auth-spotlight .login-story { border-inline-end-color: #ffffff06; }
+.auth-spotlight .login-story::before { background: linear-gradient(0deg,#050609 4%,transparent 65%); }
+.auth-spotlight .login-network { opacity: .2; }
+.auth-spotlight .network-nodes { filter: none; }
+.auth-spotlight .network-packets { filter: none; }
+.auth-spotlight .network-label { border-color: #ffffff0a; background: #050609; color: #74717f; }
+.auth-spotlight .login-glow { opacity: .12; }
+.auth-spotlight .login-panel::before { opacity: .3; }
+.auth-spotlight .login-card { background: linear-gradient(145deg,#11131b,#090b10); box-shadow: 0 24px 70px #0006,inset 0 1px #ffffff05; border-color: #ffffff15; }
+.auth-spotlight .login-card::before { opacity: .3; }
+.auth-spotlight .login-card::after { opacity: .32; filter: none; }
+.motion-enabled .auth-spotlight .story-copy { --story-light: 0; opacity: .14; transition: opacity 1.4s ease; isolation: isolate; }
+.motion-enabled .auth-spotlight .story-copy.is-lit { opacity: calc(.14 + var(--story-light) * .86); }
+.motion-enabled .auth-spotlight .story-copy::before { content: ''; position: absolute; z-index: -1; inset: -70px; pointer-events: none; border-radius: 50%; background: radial-gradient(ellipse 340px 230px at calc(var(--story-light-x,50%) + 70px) calc(var(--story-light-y,50%) + 70px),#bba9ff13,transparent 100%); filter: blur(24px); opacity: 0; transition: opacity 1.4s ease; }
+.motion-enabled .auth-spotlight .story-copy.is-lit::before { opacity: var(--story-light); }
+.login-wordfield { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.hover-word { position: absolute; transform: translate(-50%,-50%); color: #c9c1ef; font-family: monospace; font-weight: 500; letter-spacing: .12em; white-space: nowrap; opacity: 0; text-shadow: 0 0 18px #a394d66b; transition: opacity 1s ease; }
+.login-wordfield.is-active .hover-word { opacity: var(--word-opacity,0); transition-duration: .55s; }
+.auth-spotlight .story-copy h1>span:first-child { margin-inline-end: .14em; }
+.motion-enabled.login-ready .auth-spotlight .story-copy>* { animation: story-light-enter 2.8s cubic-bezier(.22,.61,.36,1) both; }
+.motion-enabled.login-ready .auth-spotlight .story-copy>h1 { animation: none; }
+.motion-enabled.login-ready .auth-spotlight .story-copy h1>span,.motion-enabled.login-ready .auth-spotlight .story-copy h1>em { display: inline-block; animation: story-light-enter 3.2s cubic-bezier(.22,.61,.36,1) both; }
+.motion-enabled.login-ready .auth-spotlight .story-copy h1>span:first-child { animation-delay: .35s; }
+.motion-enabled.login-ready .auth-spotlight .story-copy h1>span:nth-child(2) { animation-delay: .75s; }
+.motion-enabled.login-ready .auth-spotlight .story-copy h1>em { animation-delay: 1.15s; }
+.motion-enabled.login-ready .auth-spotlight .story-copy>p:not(.eyebrow) { animation-delay: 1.4s; }
+.motion-enabled.login-ready .auth-spotlight .login-disciplines { animation-delay: 1.65s; }
+.motion-enabled.login-ready .auth-spotlight .story-copy::after { content: ''; position: absolute; inset: -20px -40px; pointer-events: none; background: linear-gradient(110deg,transparent 38%,#c6b5ff15 48%,#eef3ff28 50%,transparent 62%); mix-blend-mode: screen; filter: blur(18px); animation: story-light-sweep 4.5s .3s cubic-bezier(.22,.61,.36,1) both; }
+@keyframes story-light-enter { 0% { opacity: 0; transform: translate3d(-38px,8px,0); filter: blur(8px); text-shadow: 0 0 24px #d9ceff; } 100% { opacity: 1; transform: none; filter: blur(0); text-shadow: 0 0 0 transparent; } }
+@keyframes story-light-sweep { 0% { opacity: 0; transform: translateX(-65%); } 30% { opacity: .65; } 100% { opacity: 0; transform: translateX(65%); } }
+@media(pointer:coarse), (hover:none) { .motion-enabled .auth-spotlight .story-copy { opacity: 1; }.auth-spotlight .story-copy::before { display: none; } }
+@media(prefers-reduced-motion:reduce) { .login-wordfield,.auth-spotlight .story-copy::after,.auth-spotlight .story-copy::before { display: none!important; }.auth-spotlight .story-copy,.auth-spotlight .story-copy * { animation: none!important; opacity: 1!important; transform: none!important; filter: none!important; } }

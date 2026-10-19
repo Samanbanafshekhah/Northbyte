@@ -2,9 +2,13 @@
   "name": "web-team-scroll-story",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "scripts": {
-    "dev": "node build.mjs && node server.mjs",
+    "dev": "node build.mjs && node dev.mjs",
     "build": "node build.mjs",
-    "check": "node --check app.js && node --check cursor-motion.js && node --check login.js && node --check register.js && node --check dashboard.js && node --check render.js && node --check content.js && node --check site.bundle.js && node --check server.mjs && node --test tests/motion.test.mjs tests/content.test.mjs"
+    "check:admin": "node admin-ui/check.mjs",
+    "check": "node --check admin-ui/admin.js && node --check admin-ui/ui.js && node --check admin-ui/i18n.js && node --check admin-ui/messages-locale.js && node --check dev.mjs && node --check cms.js && node --check app.js && node --check cursor-motion.js && node --check login.js && node --check register.js && node --check dashboard.js && node --check messages.js && node --check render.js && node --check content.js && node --check site.bundle.js && node --check server.mjs && node --test tests/*.test.mjs"
   }
 }

@@ -57,7 +57,7 @@ test('login route is generated with accessible auth controls and no fake credent
   assert.ok(html.includes('autocomplete="email"'));
   assert.ok(html.includes('autocomplete="current-password"'));
   assert.ok(html.includes('data-login-language'));
-  assert.equal(siteConfig.authEndpoint, '');
+  assert.equal(siteConfig.authEndpoint, '/api/auth/login');
 });
 
 test('register route is generated with secure account fields and no fake registration', async () => {
@@ -66,18 +66,18 @@ test('register route is generated with secure account fields and no fake registr
   assert.ok(html.includes('autocomplete="email"'));
   assert.equal((html.match(/autocomplete="new-password"/g) || []).length, 2);
   assert.ok(html.includes('name="terms"'));
-  assert.equal(siteConfig.registerEndpoint, '');
+  assert.equal(siteConfig.registerEndpoint, '/api/auth/register');
 });
 
-test('dashboard exposes the project workflow without pretending backend security exists', async () => {
+test('dashboard exposes the project workflow with server-authenticated messaging', async () => {
   const html = await readFile(new URL('../dashboard/index.html', import.meta.url), 'utf8');
   const script = await readFile(new URL('../dashboard.js', import.meta.url), 'utf8');
   assert.ok(html.includes('id="dashboard-app"'));
   assert.ok(script.includes("'/dashboard/projects/new'"));
   assert.ok(script.includes('allowedFiles'));
   assert.ok(script.includes('sessionEndpoint'));
-  assert.equal(siteConfig.sessionEndpoint, '');
-  assert.equal(siteConfig.projectApiBase, '');
-  assert.equal(siteConfig.demoAuth.enabled, true);
+  assert.equal(siteConfig.sessionEndpoint, '/api/session');
+  assert.equal(siteConfig.projectApiBase, '/api/client');
+  assert.equal(siteConfig.demoAuth.enabled, false);
   assert.ok(siteConfig.demoAuth.email && siteConfig.demoAuth.password);
 });
